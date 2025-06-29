@@ -1,0 +1,38 @@
+﻿@model OAIMVC.ViewModels.ChatViewModel
+@{
+    Layout = "_Layout";
+}
+<form asp-action="Index" method="post">
+    <div class="mb-3">
+        <input asp-for="Input" class="form-control" placeholder="Skriv din fråga…" />
+    </div>
+
+    @for (var i = 0; i < Model.History.Count; i++)
+    {
+        <input type="hidden" asp-for="History[i].Timestamp" />
+        <input type="hidden" asp-for="History[i].Question" />
+        <input type="hidden" asp-for="History[i].Answer" />
+    }
+
+    <button type="submit" class="btn btn-success">Skicka</button>
+</form>
+
+@if (Model.History.Any())
+{
+    <div class="mt-4">
+        @foreach (var e in Model.History)
+        {
+            <div class="p-2 mb-2 border rounded">
+                <small class="text-muted">@e.Timestamp</small>
+                <p>
+                    <img src="~/images/user.jpg" alt="User" style="height:32px; vertical-align:middle;" />
+                    <strong>@e.Question</strong>
+                </p>
+                <p>
+                    <img src="~/images/chatbot.png" alt="Chatbot" style="height:32px; vertical-align:middle;" />
+                    @e.Answer
+                </p>
+            </div>
+        }
+    </div>
+}
