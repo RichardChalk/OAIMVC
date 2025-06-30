@@ -3,8 +3,19 @@
     Layout = "_Layout";
 }
 <form asp-action="Index" method="post">
-    <div class="mb-3">
-        <input asp-for="Input" class="form-control" placeholder="Skriv din fråga…" />
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text p-0">
+                    <img src="~/images/user.jpg" alt="User" style="height:64px;" />
+                </span>
+                <input asp-for="Input" class="form-control" placeholder="Skriv din fråga…" style="font-size:1.5em;" />
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center" style="font-size:1.5em";>
+            <img src="~/images/chatbot.png" alt="Chatbot" style="height:64px; margin-right:8px;" />
+            Fråga mig vad som helst...
+        </div>
     </div>
 
     @for (var i = 0; i < Model.History.Count; i++)
@@ -14,7 +25,7 @@
         <input type="hidden" asp-for="History[i].Answer" />
     }
 
-    <button type="submit" class="btn btn-success">Skicka</button>
+    <button type="submit" class="btn btn-success" style="font-size:1.5em;">Skicka</button>
 </form>
 
 @if (Model.History.Any())
