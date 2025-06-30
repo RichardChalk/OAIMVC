@@ -3,9 +3,6 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using OAIMVC.Models;
 using OAIMVC.ViewModels;
-using OpenAI;
-using System;
-using System.Threading.Tasks;
 
 namespace OAIMVC.Controllers
 {
@@ -46,13 +43,13 @@ namespace OAIMVC.Controllers
 
                 model.History = model.History
                     .OrderByDescending(e => e.Timestamp)
-                    .ToList(); 
+                    .ToList();
             }
-            
+
             // Jag vill rensa frågan efter varje submit!
             model.Input = string.Empty;
             ModelState.Clear();
-            
+
             return View(model);
         }
     }
