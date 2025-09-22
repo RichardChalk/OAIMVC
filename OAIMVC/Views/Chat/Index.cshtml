@@ -12,12 +12,13 @@
                 <input asp-for="Input" class="form-control" placeholder="Skriv din fråga…" style="font-size:1.5em;" />
             </div>
         </div>
-        <div class="col-md-6 d-flex align-items-center" style="font-size:1.5em";>
+        <div class="col-md-6 d-flex align-items-center" style="font-size:1.5em" ;>
             <img src="~/images/chatbot.png" alt="Chatbot" style="height:64px; margin-right:8px;" />
             Fråga mig vad som helst...
         </div>
     </div>
 
+    @*hidden gör att data följer med i POST-requesten utan att störa användarens vy*@
     @for (var i = 0; i < Model.History.Count; i++)
     {
         <input type="hidden" asp-for="History[i].Timestamp" />
